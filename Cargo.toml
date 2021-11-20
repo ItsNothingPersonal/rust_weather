@@ -1,5 +1,5 @@
 [package]
-authors = ["timesink <littleperlmonk@gmail.com>"]
+authors = ["Sebastian Tremmel <littleperlmonk@gmail.com>"]
 description = "A small cli program that gets weather data for your area"
 edition = "2021"
 license = "MIT"

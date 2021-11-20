@@ -3,20 +3,27 @@
 ![Build](https://github.com/ItsNothingPersonal/rust_weather/actions/workflows/rust.yml/badge.svg)
 ![Security Audit](https://github.com/ItsNothingPersonal/rust_weather/actions/workflows/security_audit.yml/badge.svg)
 
-rustweather is a small cli tool that pulls weatherdata from https://openweathermap.org for your local area
+rust_weather is a small cli tool that pulls weatherdata from https://openweathermap.org for your local area.
+This is my rust version of the dart program from [this article by Marvin Knabe](https://medium.com/@m_knabe/create-a-command-line-app-with-dart-8633d3d4a437).
 
 ## Installation
 
-1. Install Rust for your operating system from https://www.rust-lang.org/tools/install
-2. git clone the repository
-3. run cargo to build the project
+1. Create an openweathermap.org account (free tier is enough) over at https://openweathermap.org
+2. Install rust for your operating system from https://www.rust-lang.org/tools/install
+3. Clone the repository
+4. Run cargo to build the project
 
 ```bash
 cargo build --release
 ```
 
-4. run the resulting binary
-5. Profit
+5. Run the resulting binary and pass the required parameters
+
+```bash
+rust_weather.exe --zip <your-zip-code> --country <your-country-code> --api-key <your-api-key>
+```
+
+6. Profit
 
 ## Contributing
 
