@@ -1,0 +1,14 @@
+[package]
+authors = ["timesink <littleperlmonk@gmail.com>"]
+description = "A small cli program that gets weather data for your area"
+edition = "2021"
+license = "MIT"
+name = "rust_weather"
+version = "0.1.0"
+
+[dependencies]
+
+[dev-dependencies.cargo-husky]
+default-features = false # Disable features which are enabled by default
+features = ["user-hooks"] 
+version = "1"
