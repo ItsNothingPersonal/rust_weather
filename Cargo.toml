@@ -7,7 +7,13 @@ name = "rust_weather"
 version = "0.1.0"
 
 [dependencies]
+reqwest = { version = "0.11.6", default-features = false, features = ["json", "rustls-tls"] }
+serde = "1.0.130"
 type-cli = "0.0.3"
+tokio = { version = "1.14.0", features = ["full"] }
+serde_derive = "1.0.130"
+exitfailure = "0.5.1"
+chrono = "0.4.19"
 
 [dev-dependencies.cargo-husky]
 default-features = false # Disable features which are enabled by default
