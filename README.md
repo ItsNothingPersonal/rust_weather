@@ -1,4 +1,7 @@
-# rustweather
+# rust_weather
+
+![Build](https://github.com/ItsNothingPersonal/rust_weather/actions/workflows/rust.yml/badge.svg)
+![Security Audit](https://github.com/ItsNothingPersonal/rust_weather/actions/workflows/security_audit.yml/badge.svg)
 
 rustweather is a small cli tool that pulls weatherdata from https://openweathermap.org for your local area
 

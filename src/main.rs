@@ -1,11 +1,11 @@
+use anyhow::Result;
 use chrono::Local;
-use exitfailure::ExitFailure;
 use reqwest::Url;
 use serde_derive::{Deserialize, Serialize};
 use type_cli::CLI;
 
 #[tokio::main]
-async fn main() -> Result<(), ExitFailure> {
+async fn main() -> Result<()> {
     let RustWeather {
         api_key,
         zip,
@@ -13,7 +13,7 @@ async fn main() -> Result<(), ExitFailure> {
     } = RustWeather::process();
 
     let res = ForeCast::get(&zip, &country, &api_key).await?;
-    
+
     println!(
         "{}",
         format!(
@@ -66,7 +66,7 @@ struct ForeCast {
 }
 
 impl ForeCast {
-    async fn get(zip: &str, country: &str, api_key: &str) -> Result<Self, ExitFailure> {
+    async fn get(zip: &str, country: &str, api_key: &str) -> Result<Self> {
         let url = format!(
             "https://api.openweathermap.org/data/2.5/weather?zip={zip},{country}&units=metric&appid={api_key}",
             zip = zip,
