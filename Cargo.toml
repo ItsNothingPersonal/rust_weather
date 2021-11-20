@@ -18,7 +18,7 @@ type-cli = "0.0.3"
 [dev-dependencies.cargo-husky]
 default-features = false # Disable features which are enabled by default
 features = ["user-hooks"] 
-version = "1"
+version = "1" 
 
 [patch.crates-io]
-chrono = { git = "https://github.com/timvisee/chrono", branch = "time-0.3" }
+chrono = {git = "https://github.com/timvisee/chrono", branch = "time-0.3"}
