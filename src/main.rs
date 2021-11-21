@@ -1,5 +1,4 @@
 use anyhow::Result;
-use chrono::Local;
 use rust_weather::{ForeCast, RustWeather};
 use type_cli::CLI;
 
@@ -22,7 +21,6 @@ async fn main() -> Result<()> {
         )
     );
     println!("---------------------------------------");
-    println!("{}", Local::now().format("%d.%m.%Y %H:%M:%S"));
     println!(
         "{}",
         format!(
