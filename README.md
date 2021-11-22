@@ -20,10 +20,18 @@ cargo build --release
 5. Run the resulting binary and pass the required parameters
 
 ```bash
-rust_weather.exe --zip <your-zip-code> --country <your-country-code> --api-key <your-api-key>
+rust_weather.exe --country <your-country-code> --api-key <your-api-key> <number of zip codes>
 ```
 
 6. Profit
+
+## Questions?
+
+You can ask questions via issues, but make sure you try the help command first!
+
+```bash
+rust_weather.exe --help
+```
 
 ## Contributing
 
