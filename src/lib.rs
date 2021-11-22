@@ -1,17 +1,20 @@
 use anyhow::Result;
 use reqwest::Url;
 use serde_derive::{Deserialize, Serialize};
-use type_cli::CLI;
 
-#[derive(CLI)]
+#[derive(PartialEq, Eq, Debug, type_cli::CLI)]
+#[help = "rust_weather - a small cli tool to get weather data for zip codes"]
 pub struct RustWeather {
     #[named(short = "a")]
+    #[help = "the api key from https://openweathermap.org"]
     pub api_key: String,
 
-    #[named(short = "z")]
-    pub zip: String,
+    #[variadic]
+    #[help = "zip codes you want to get data for"]
+    pub zip: Vec<String>,
 
     #[named(short = "c")]
+    #[help = "the country code of the zip codes, e.g. de"]
     pub country: String,
 }
 
@@ -31,8 +34,18 @@ pub struct ForeCast {
     cod: f64,
 }
 
-impl ForeCast {
-    pub async fn get(zip: &str, country: &str, api_key: &str) -> Result<Self> {
+pub struct ForeCastClient {
+    client: reqwest::Client,
+}
+
+impl ForeCastClient {
+    pub fn new() -> Self {
+        ForeCastClient {
+            client: reqwest::Client::new(),
+        }
+    }
+
+    pub async fn get(&mut self, zip: &str, country: &str, api_key: &str) -> Result<ForeCast> {
         let url = format!(
             "https://api.openweathermap.org/data/2.5/weather?zip={zip},{country}&units=metric&appid={api_key}",
             zip = zip,
@@ -40,10 +53,22 @@ impl ForeCast {
             api_key = api_key,
         );
 
-        let url = Url::parse(&*url)?;
-        let res = reqwest::get(url).await?.json::<ForeCast>().await?;
+        let url_parsed = Url::parse(&*url).unwrap();
+        let res = self
+            .client
+            .get(url_parsed)
+            .send()
+            .await?
+            .json::<ForeCast>()
+            .await?;
 
         Ok(res)
+    }
+}
+
+impl Default for ForeCastClient {
+    fn default() -> Self {
+        ForeCastClient::new()
     }
 }
 
