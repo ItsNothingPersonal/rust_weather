@@ -53,7 +53,7 @@ impl ForeCastClient {
             api_key = api_key,
         );
 
-        let url_parsed = Url::parse(&*url).unwrap();
+        let url_parsed = Url::parse(&url).unwrap();
         let res = self
             .client
             .get(url_parsed)
